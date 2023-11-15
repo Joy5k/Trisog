@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-
+import { FaShoppingCart, FaUserCircle } from "react-icons/fa";
+import { AuthContext } from '../../context/AuthProvider';
 const Navbar = () => {
+  const{user,logOutUser}=useContext(AuthContext)
+  const handleLogOut = () => {
+    logOutUser()
+      .then((res) => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
     return (
         <div>
             <div className="navbar bg-base-100 px-8">
@@ -35,12 +44,15 @@ const Navbar = () => {
                 </div>
                 
                 <div className="navbar-end">
+               <Link to="/booking"> <FaShoppingCart className='mr-5 cursor-pointer w-5 h-5' /></Link>
 
 {/* user profile */}
                 <div className="dropdown dropdown-end">
-      <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-        <div className="w-10 rounded-full">
-          <img alt="Tailwind CSS Navbar component" src="https://plus.unsplash.com/premium_photo-1677553953986-a78e31a192f8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFufGVufDB8fDB8fHww" />
+      <label tabIndex={0} className="btn btn-ghost btn-circle avatar bg-transparent hover:bg-transparent">
+                <div className="w-10 ">
+               <FaUserCircle className='w-8 h-8 mt-1' />
+
+          {/* <img alt="Tailwind CSS Navbar component" src="https://plus.unsplash.com/premium_photo-1677553953986-a78e31a192f8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFufGVufDB8fDB8fHww" /> */}
         </div>
       </label>
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
@@ -50,14 +62,22 @@ const Navbar = () => {
             <span className="badge">New</span>
           </a>
         </li>
-        <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
+                <li><a>Settings</a></li>
+                {user ? (
+      
+          <li> <Link onClick={handleLogOut} to="/" className="bg-yellow-400">
+            LogOut
+          </Link></li>
+         
+        ) : (
+         <li> <Link to="/login" className="bg-yellow-400">
+            Login
+          </Link></li>
+        )}
       </ul>
     </div>                
 
-    <Link to="/login" className="btn">login</Link >
-                    <Link to="/signup" className="btn">signUp</Link >
-                    
+ 
   </div>
 </div>
         </div>
