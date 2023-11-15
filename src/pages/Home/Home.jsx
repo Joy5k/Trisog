@@ -3,6 +3,7 @@ import Destination from '../../Comopnents/Destination';
 import img1 from "../../assets/headerImg-1.jpeg"
 import img2 from "../../assets/headerImg-2.avif"
 import Category from '../../Comopnents/Category';
+import TripPlan from '../../Comopnents/TripPlan';
 const Home = () => {
     return (
         <div>
@@ -23,11 +24,12 @@ const Home = () => {
                     </div>
   
   </div>
-</div>
+            </div>
             <div className='-mt-36 mb-20'> <Destination></Destination></div>
             
             </div>
             <Category></Category>
+            <TripPlan></TripPlan>
      </div>
     );
 };
