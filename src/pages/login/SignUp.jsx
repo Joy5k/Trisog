@@ -1,12 +1,15 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import signup from "../../assets/signup.png";
 import { AuthContext } from '../../context/AuthProvider';
 
 const SignUp = () => {
-  
+  const location = useLocation();
+  const navigate=useNavigate()
+  const from = location.state?.from?.pathname || '/';
+
   const [formData, setFormData] = useState({});
-  const { createUser, signInWithGoogle } = useContext(AuthContext);
+  const { createUser, UpdateUserInfo } = useContext(AuthContext);
   const [error, setError] = useState('');
 
   const handleFormChange = (e) => {
@@ -18,26 +21,31 @@ const SignUp = () => {
   };
 
 
-
-    const handleSignUp = (event) => {
-        event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    const name = form.firstName.value;
-      const lastName = form.lastName.value;
-      createUser(email, password)
-        .then((result) => {
-          const user = result.user;
-          const currentUser = {
-            email:user.email
-          }
-          console.log(currentUser,'current user');
-        })
-        .catch((error) => {
-          setError(error.message);
-        });
+  const handleSignUp = async (event) => {
+    console.log(formData);
+    event.preventDefault();
+    const { email, password, phone, firstName, lastName } = formData;
+  
+    try {
+      const result = await createUser(email, password);
+  
+      const user = result.user;
+      localStorage.setItem('userInfo', JSON.stringify(formData));
+      const userData = {
+        phoneNumber: phone,
+        displayName: firstName + ' ' + lastName,
+      };
+  
+      console.log(userData);
+  
+      await UpdateUserInfo(userData);
+      setError('')
+      navigate(from, { replace: true })
+    } catch (error) {
+      setError(error.message);
+      console.error('Error during sign up or update:', error);
     }
+  };
     return (
         <div>
              <div className="hero min-h-screen bg-base-200">
@@ -61,6 +69,12 @@ const SignUp = () => {
             <span className="label-text">Last Name</span>
           </label>
           <input onChange={handleFormChange} type="text" placeholder="Enter Your Last Name" name='lastName' className="input input-bordered" required />
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Phone Number</span>
+          </label>
+          <input onChange={handleFormChange} type="tel" placeholder="+8801600000" name='phone' className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">

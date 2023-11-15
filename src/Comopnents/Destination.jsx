@@ -28,8 +28,8 @@ const Destination = () => {
     }
     
     return (
-        <div className='w-10/12 mx-auto'>
-            <form onSubmit={handleDestination} action="">
+        <div className='w-9/12 mx-auto bg-white p-4 rounded-lg '>
+            <form className='ml-6 ' onSubmit={handleDestination} action="">
                 <div className='grid grid-cols-2 lg:grid-cols-5 gap-5'>
 
                 <div className="form-control">
@@ -55,9 +55,9 @@ const Destination = () => {
           </label>
           <input onChange={handleFormChange} type="text" placeholder="Guests" name='guests' className="input input-bordered" required />
         </div>
-                    <div className="form-control my-auto w-36 mt-8 ">
+                    <div className="form-control my-auto  mt-8 ">
         
-                <button type='submit' className='btn bg-[#f8d448] hover:bg-yellow-500'>Search</button>
+                <button type='submit' className='btn w-36 bg-[#f8d448] hover:bg-yellow-500'>Search</button>
         </div>
                 </div>
             </form>

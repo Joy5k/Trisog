@@ -1,15 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../context/AuthProvider';
+import { Link, useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const Booked = () => {
-    const [formData,setFormData]=useState({})
-    useEffect(() => {
-        const formData = JSON.parse(localStorage.getItem('formData'))
-        setFormData(formData)
-    },[])
+  const navigate=useNavigate()
+  const{user}=useContext(AuthContext)
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'))
+    const[formData,setFormData] = useState({})
+  useEffect(() => {
+    const bookingData = JSON.parse(localStorage.getItem('formData'))
+  setFormData(bookingData)
+  },[setFormData])
+  const handleBooking = () => {
+    localStorage.removeItem("formData")
+    swal("Delete", "Successfully Delete", "success");
+    setFormData({})
+    navigate("/")
+}
+  console.log(user);
     return (
-        <div>
-            <div className="overflow-x-auto">
-  <table className="table">
+        <div className='h-screen'>
+            <div className="overflow-x-auto ">
+          {
+            formData && user ? <>
+              <table className="table">
     {/* head */}
     <thead>
       <tr>
@@ -31,112 +46,32 @@ const Booked = () => {
               </div>
             </div>
             <div>
-              <div className="font-bold">Hart Hagerty</div>
-              <div className="text-sm opacity-50">United States</div>
+              <div className="font-bold">{userInfo?.firstName} { userInfo?.lastName}</div>
+          
             </div>
           </div>
         </td>
         <td>
-          Zemlak, Daniel and Leannon
-          <br/>
-          <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+         {user?.email}
         </td>
-        <td>Purple</td>
+             <td>{userInfo?.phone }</td>
         <th>
-          <button className="btn btn-ghost btn-xs">details</button>
+          <td>{formData?.date}</td>
         </th>
-      </tr>
-      {/* row 2 */}
-      <tr>
-
-        <td>
-          <div className="flex items-center gap-3">
-            <div className="avatar">
-              <div className="mask mask-squircle w-12 h-12">
-                <img src="https://plus.unsplash.com/premium_photo-1677553953986-a78e31a192f8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFufGVufDB8fDB8fHww" alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            <div>
-              <div className="font-bold">Brice Swyre</div>
-              <div className="text-sm opacity-50">China</div>
-            </div>
-          </div>
-        </td>
-        <td>
-          Carroll Group
-          <br/>
-          <span className="badge badge-ghost badge-sm">Tax Accountant</span>
-        </td>
-        <td>Red</td>
         <th>
-          <button className="btn btn-ghost btn-xs">details</button>
+          <td>{formData?.destination}</td>
         </th>
-      </tr>
-      {/* row 3 */}
-      <tr>
-       
-        <td>
-          <div className="flex items-center gap-3">
-            <div className="avatar">
-              <div className="mask mask-squircle w-12 h-12">
-                <img src="https://plus.unsplash.com/premium_photo-1677553953986-a78e31a192f8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFufGVufDB8fDB8fHww" alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            <div>
-              <div className="font-bold">Marjy Ferencz</div>
-              <div className="text-sm opacity-50">Russia</div>
-            </div>
-          </div>
-        </td>
-        <td>
-          Rowe-Schoen
-          <br/>
-          <span className="badge badge-ghost badge-sm">Office Assistant I</span>
-        </td>
-        <td>Crimson</td>
         <th>
-          <button className="btn btn-ghost btn-xs">details</button>
-        </th>
-      </tr>
-      {/* row 4 */}
-      <tr>
-      
-        <td>
-          <div className="flex items-center gap-3">
-            <div className="avatar">
-              <div className="mask mask-squircle w-12 h-12">
-                <img src="https://plus.unsplash.com/premium_photo-1677553953986-a78e31a192f8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFufGVufDB8fDB8fHww" alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            <div>
-              <div className="font-bold">Yancy Tear</div>
-              <div className="text-sm opacity-50">Brazil</div>
-            </div>
-          </div>
-        </td>
-        <td>
-          Wyman-Ledner
-          <br/>
-          <span className="badge badge-ghost badge-sm">Community Outreach Specialist</span>
-        </td>
-        <td>Indigo</td>
-        <th>
-          <button className="btn btn-ghost btn-xs">details</button>
+          <button onClick={()=>handleBooking()} className="btn bg-red-400 btn-xs text-white ">Delete</button>
         </th>
       </tr>
     </tbody>
-    {/* foot */}
-    <tfoot>
-      <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
-        <th></th>
-      </tr>
-    </tfoot>
-    
+ 
   </table>
+            </> : <div className='h-screen w-11/12 mx-auto'><p className='text-4xl text-center font-extrabold mt-20'>Select any destination first <Link to="/" className="underline  text-blue-500 text-center  ">continue </Link> </p>
+              </div>
+
+}
 </div>
         </div>
     );
