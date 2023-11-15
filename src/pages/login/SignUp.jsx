@@ -5,8 +5,20 @@ import { AuthContext } from '../../context/AuthProvider';
 
 const SignUp = () => {
   
+  const [formData, setFormData] = useState({});
   const { createUser, signInWithGoogle } = useContext(AuthContext);
   const [error, setError] = useState('');
+
+  const handleFormChange = (e) => {
+    // Update form data when input fields change
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+
+
     const handleSignUp = (event) => {
         event.preventDefault();
     const form = event.target;
@@ -42,25 +54,25 @@ const SignUp = () => {
           <label className="label">
             <span className="label-text">First Name</span>
           </label>
-          <input type="text" placeholder="Enter Your first name" name='firstName' className="input input-bordered" required />
+          <input onChange={handleFormChange} type="text" placeholder="Enter Your first name" name='firstName' className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Last Name</span>
           </label>
-          <input type="text" placeholder="Enter Your Last Name" name='lastName' className="input input-bordered" required />
+          <input onChange={handleFormChange} type="text" placeholder="Enter Your Last Name" name='lastName' className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="email" placeholder="email" name='email' className="input input-bordered" required />
+          <input onChange={handleFormChange} type="email" placeholder="email" name='email' className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="password" placeholder="password" name='password' className="input input-bordered" required />
+          <input onChange={handleFormChange} type="password" placeholder="password" name='password' className="input input-bordered" required />
         </div>
         <div className="form-control mt-6">
           <button type='submit' className="btn  bg-[#FF725E]">Sign Up</button>
