@@ -5,6 +5,7 @@ import img2 from "../../assets/headerImg-2.avif"
 import Category from '../../Comopnents/Category';
 import TripPlan from '../../Comopnents/TripPlan';
 import OurDestinations from '../../Comopnents/OurDestinations';
+import FeaturedTour from '../../Comopnents/FeaturedTour';
 const Home = () => {
     return (
         <div>
@@ -32,6 +33,7 @@ const Home = () => {
             <Category></Category>
             <TripPlan></TripPlan>
             <OurDestinations></OurDestinations>
+            <FeaturedTour></FeaturedTour>
      </div>
     );
 };
