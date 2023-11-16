@@ -22,14 +22,14 @@ const Home = () => {
                         <p className='text-[#DAE0EA] '>Find awesome hotel,tour,car and Activities <br />
      consectetur adipisicing elit. Autem fugit temporibus vero beatae officiis magni nam dolore amet veritatis eius. Quibusdam accusamus eos ipsa, quas cupiditate a placeat sequi asperiores.                    </p>
     </div>
-     <div className='flex flex-row-reverse justify-evenly  w-1/2 m-10'>
-     <img src={img2} className=" rounded-lg shadow-2xl h-fit w-fit" />
+     <div className='flex flex-row-reverse justify-evenly max-w-1/2 h-96 m-10'>
+     <img src={img2} className=" rounded-lg shadow-2xl h-auto w-fit" />
                       
                     </div>
   
   </div>
             </div>
-            <div className='-mt-36 mb-20'> <Destination></Destination></div>
+            <div className='-mt-36 mb-36'> <Destination></Destination></div>
             
             </div>
             <Category></Category>

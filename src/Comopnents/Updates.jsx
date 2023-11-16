@@ -15,7 +15,7 @@ const Updates = () => {
             <h2 className='text-4xl text-center font-extrabold'>Lates Travel Guid</h2>
 
             <div className='grid sm:grid-cols-1 lg:grid-cols-2 gap-4 mt-10 p-16'>
-
+{/* first Card */}
             <div className="card card-side   w-fit h-40 rounded-none">
                  <figure><img className='h-full' src={ img1} alt="Movie"/></figure>
   <div className="card-body">
@@ -23,7 +23,8 @@ const Updates = () => {
     <h2 className="card-title font-bold">The Impact of The covid-19 <br />travel and tourism industry</h2>
   
   </div>
-            </div>
+                </div>
+ {/* second Card */}
             <div className="card card-side   w-fit h-40 rounded-none">
                  <figure><img className='h-full' src={ img2} alt="Movie"/></figure>
   <div className="card-body">
@@ -31,7 +32,8 @@ const Updates = () => {
     <h2 className="card-title font-bold">The Impact of The covid-19 <br />travel and tourism industry</h2>
   
   </div>
-            </div>
+                </div>
+ {/* Third Card             */}
             <div className="card card-side   w-fit h-40 rounded-none">
                  <figure><img className='h-full' src={ img3} alt="Movie"/></figure>
   <div className="card-body">
@@ -39,7 +41,8 @@ const Updates = () => {
     <h2 className="card-title font-bold">The Impact of The covid-19 <br />travel and tourism industry</h2>
   
   </div>
-            </div>
+                </div>
+   {/* Fourth Card              */}
             <div className="card card-side   w-fit h-40 rounded-none">
                  <figure><img className='h-full' src={ img4} alt="Movie"/></figure>
   <div className="card-body">

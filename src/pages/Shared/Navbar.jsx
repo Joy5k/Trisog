@@ -1,9 +1,33 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaShoppingCart, FaUserCircle } from "react-icons/fa";
 import { AuthContext } from '../../context/AuthProvider';
+import { LuSearch } from "react-icons/lu";
+import Destination from '../../Comopnents/Destination';
+
+
 const Navbar = () => {
-  const{user,logOutUser}=useContext(AuthContext)
+  const { user, logOutUser,matchedDestination,setMatchedDestination } = useContext(AuthContext)
+  const [searchText, setSearchText] = useState('')
+  const [destinations, setDestination] = useState([
+    { id: 1, name: 'New York' },
+    { id: 2, name: 'Oman' },
+    { id: 3, name: 'Australia' },
+    { id: 4, name: 'California' },
+
+  ])
+ 
+  const handleSearch = (event) => {
+    event.preventDefault();
+    const searchText = event.target.search.value;
+    setSearchText(searchText)
+      if(searchText === "oman" || searchText === "australia" || searchText === "canada") {
+        setMatchedDestination(true)
+    }else {
+    setMatchedDestination(false)
+      }
+    
+}
   const handleLogOut = () => {
     logOutUser()
       .then((res) => {})
@@ -11,8 +35,9 @@ const Navbar = () => {
         console.log(error);
       });
   };
+  console.log(matchedDestination);
     return (
-        <div>
+      <div>
             <div className="navbar bg-base-100 px-8">
   <div className="navbar-start">
     <div className="dropdown">
@@ -42,9 +67,15 @@ const Navbar = () => {
       <li><Link to="/about">Contact</Link ></li>
     </ul>
                 </div>
-                
-                <div className="navbar-end">
-               <Link to="/booking"> <FaShoppingCart className='mr-5 cursor-pointer w-5 h-5' /></Link>
+              
+          <div className="navbar-end">
+          <form onSubmit={handleSearch} className="join mr-5 ml-10">
+        <input type="text" placeholder="Destinations" name='search' className="h-[46px] mt-[1px] input input-bordered join-item text-black" /> 
+        <button type='submit' className="btn bg-[#F8D448] join-item cursor-pointer"><LuSearch />
+</button>
+      </form>
+
+               <Link className='cursor-pointer ' to="/booking"> <FaShoppingCart className='mr-5 cursor-pointer w-5 h-5 ' /></Link>
 
 {/* user profile */}
                 <div className="dropdown dropdown-end">

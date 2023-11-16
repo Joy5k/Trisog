@@ -2,12 +2,14 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+import { FaSadCry } from 'react-icons/fa';
 
 const Booked = () => {
   const navigate=useNavigate()
   const{user}=useContext(AuthContext)
     const userInfo = JSON.parse(localStorage.getItem('userInfo'))
-    const[formData,setFormData] = useState({})
+  const [formData, setFormData] = useState({})
+  const [isSaved,setIsSaved] = useState(false)
   useEffect(() => {
     const bookingData = JSON.parse(localStorage.getItem('formData'))
   setFormData(bookingData)
@@ -17,7 +19,11 @@ const Booked = () => {
     swal("Delete", "Successfully Delete", "success");
     setFormData({})
     navigate("/")
-}
+  }
+  const handleBookingSave = () => {
+    swal("Success", "Successfully Delete", "success");
+    setIsSaved(true)
+  }
   console.log(user);
     return (
         <div className='h-screen'>
@@ -62,7 +68,12 @@ const Booked = () => {
           <td>{formData?.destination}</td>
         </th>
         <th>
-          <button onClick={()=>handleBooking()} className="btn bg-red-400 btn-xs text-white ">Delete</button>
+        <th>
+                        {
+                          isSaved ?  <button onClick={()=>handleBookingSave()} className="btn bg-green-400 btn-xs text-white ml-2" disabled>Saved</button>: <button onClick={()=>handleBookingSave()} className="btn bg-green-500 btn-xs text-white mr-2 ">Save</button>
+         }
+         {isSaved ?  <button onClick={()=>handleBooking()} className="btn ml-2 bg-red-400 btn-xs text-white ">Cancel Processing</button>: <button onClick={()=>handleBooking()} className="btn bg-red-400 btn-xs text-white ">Delete</button>}
+        </th>
         </th>
       </tr>
     </tbody>

@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import swal from 'sweetalert';
+import { AuthContext } from '../context/AuthProvider';
+import "./style/Destination.css"
+import { useNavigate } from 'react-router-dom';
+
 const Destination = () => {
+  const navigate=useNavigate()
+  const{matchedDestination}=useContext(AuthContext)
     const [formData, setFormData] = useState({});
-    const [destinations, setDestinations] = useState([
-        { id: 1, name: 'New york ' },
-        { id: 2, name: 'California ' },
-    ]);
     useEffect(() => {
         const storedFormData = JSON.parse(localStorage.getItem('formData'));
         if (storedFormData) {
@@ -23,13 +25,14 @@ const Destination = () => {
     const handleDestination = (event) => {
         event.preventDefault();
           localStorage.setItem('formData', JSON.stringify(formData));
-        swal("Success", "Successfully added", "success");
+      navigate('/booking')
 
     }
     
     return (
-        <div className='w-9/12 mx-auto bg-white p-4 rounded-lg '>
-            <form className='ml-6 ' onSubmit={handleDestination} action="">
+      <div className='w-9/12 mx-auto bg-white p-4 rounded-lg '>
+        
+            {matchedDestination ? <form className='ml-6 ' onSubmit={handleDestination} action="">
                 <div className='grid grid-cols-2 lg:grid-cols-5 gap-5'>
 
                 <div className="form-control">
@@ -60,7 +63,7 @@ const Destination = () => {
                 <button type='submit' className='btn w-36 bg-[#f8d448] hover:bg-yellow-500'>Search</button>
         </div>
                 </div>
-            </form>
+            </form> : <p className='text-yellow-400 font-bold sliding-text'>Search your desire Destination on search bar</p> }
         </div>
     );
 };
