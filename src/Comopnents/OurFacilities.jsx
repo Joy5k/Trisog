@@ -4,7 +4,6 @@ import img1 from"../assets/logo1.png";
 import img2 from"../assets/logo2.png";
 import img3 from"../assets/logo3.png";
 import img4 from "../assets/logo4.png";
-import img5 from "../assets/partners.png";
 
 const OurFacilities = () => {
     return (

@@ -7,6 +7,7 @@ import TripPlan from '../../Comopnents/TripPlan';
 import OurDestinations from '../../Comopnents/OurDestinations';
 import FeaturedTour from '../../Comopnents/FeaturedTour';
 import OurFacilities from '../../Comopnents/OurFacilities';
+import Updates from '../../Comopnents/Updates';
 const Home = () => {
     return (
         <div>
@@ -37,6 +38,7 @@ const Home = () => {
             <FeaturedTour></FeaturedTour>
             <OurFacilities></OurFacilities>
             <img src={img1} alt="" />
+            <Updates></Updates>
      </div>
     );
 };
