@@ -34,7 +34,7 @@ const FeaturedTour = () => {
             <div className=" w-64 bg-base-100 mt-16">
   <figure><img className='w-full' src={img2} alt="Img" /></figure>
   <div className="p-4">
-  <span className='text-gray-400 '>Australia</span>
+  <span className='text-gray-400 '>Greater London, UK</span>
     <p className='font-extrabold text-xl my-2'>Wonder of The West <br /> Coast & Kimberly</p>
     <div className="card-actions flex  justify-between">
                             <div className="flex gap-2 justify-start">
@@ -54,7 +54,7 @@ const FeaturedTour = () => {
             <div className=" w-64 bg-base-100 mt-16">
   <figure><img className='w-full' src={img3} alt="Img" /></figure>
   <div className="p-4">
-  <span className='text-gray-400 '>Australia</span>
+  <span className='text-gray-400 '>Budapest,Hungary</span>
     <p className='font-extrabold text-xl my-2'>Wonder of The West <br /> Coast & Kimberly</p>
     <div className="card-actions flex  justify-between">
                             <div className="flex gap-2 justify-start">
@@ -74,7 +74,7 @@ const FeaturedTour = () => {
             <div className=" w-64 bg-base-100 mt-16">
   <figure><img className='w-full' src={img4} alt="Img" /></figure>
   <div className="p-4">
-  <span className='text-gray-400 '>Australia</span>
+  <span className='text-gray-400 '>Oman</span>
     <p className='font-extrabold text-xl my-2'>Wonder of The West <br /> Coast & Kimberly</p>
     <div className="card-actions flex  justify-between">
                             <div className="flex gap-2 justify-start">
