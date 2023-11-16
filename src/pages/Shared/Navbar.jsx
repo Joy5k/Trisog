@@ -34,7 +34,11 @@ const Navbar = () => {
 }
   const handleLogOut = () => {
     logOutUser()
-      .then((res) => {})
+      .then((res) => { 
+        localStorage.removeItem('userInfo');
+        localStorage.removeItem('formData');
+      })
+      
       .catch((error) => {
         console.log(error);
       });

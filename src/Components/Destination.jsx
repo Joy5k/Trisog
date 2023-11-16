@@ -7,7 +7,13 @@ import { useNavigate } from 'react-router-dom';
 const Destination = () => {
   const navigate=useNavigate()
   const{matchedDestination}=useContext(AuthContext)
-    const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({});
+  
+  
+  const storedFormData = JSON.parse(localStorage.getItem('formData'));
+  const data = { ...formData, ...storedFormData }
+  
+  console.log(data,'sending the data');
     useEffect(() => {
         const storedFormData = JSON.parse(localStorage.getItem('formData'));
         if (storedFormData) {
@@ -24,8 +30,20 @@ const Destination = () => {
 
     const handleDestination = (event) => {
         event.preventDefault();
-          localStorage.setItem('formData', JSON.stringify(formData));
-      navigate('/booking')
+      localStorage.setItem('formData', JSON.stringify(data));
+      fetch("http://localhost:5000/booking", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+       swal('Yeah',"Saved data on server","success")
+       navigate('/booking')
+        });
     }
     
     return (

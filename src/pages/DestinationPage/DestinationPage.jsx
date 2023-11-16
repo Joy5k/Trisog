@@ -31,15 +31,15 @@ const DestinationPage = () => {
                      <div className='bg-[#16377E] mb-10'>
             {/* Hero */}
             <div className="hero min-h-screen bg-[#16377E]">
-                <div className="hero-content -mt-36 grid-cols-2 w-fit">
+                <div className="hero-content -mt-36 flex lg:flex-row flex-col-reverse w-fit">
 
-                <div className='w-1/2'>
-      <h1 className="text-5xl font-bold text-white">Travel &</h1> <br />
-      <h1 className="text-5xl font-bold text-white">Advancers</h1> <br />
+                <div className='lg:w-1/2 w-fit my-5'>
+      <h1 className="text-5xl font-bold text-white">Canada,</h1> <br />
+      <h1 className="text-5xl font-bold text-white">Have a Good Journey</h1> <br />
                  <p className='text-[#DAE0EA] '>Find awesome hotel,tour,car and Activities <br />
      consectetur adipisicing elit. Autem fugit temporibus vero beatae officiis magni nam dolore amet veritatis eius. Quibusdam accusamus eos ipsa, quas cupiditate a placeat sequi asperiores.                    </p>
     </div>
-     <div className='flex flex-row-reverse justify-evenly max-w-1/2 h-96 m-10'>
+    <div className='flex flex-row-reverse justify-evenly max-w-1/2 h-96 m-10'>
      <img src={img1} className=" rounded-lg shadow-2xl h-auto w-fit" />
                       
                     </div>
