@@ -12,7 +12,8 @@ const Booked = () => {
   const [isSaved,setIsSaved] = useState(false)
   useEffect(() => {
     const bookingData = JSON.parse(localStorage.getItem('formData'))
-  setFormData(bookingData)
+    setFormData(bookingData)
+    setIsSaved(bookingData?.isSaved)
   },[setFormData])
   const handleBooking = () => {
     localStorage.removeItem("formData")
@@ -23,6 +24,22 @@ const Booked = () => {
   const handleBookingSave = () => {
     swal("Success", "Successfully Delete", "success");
     setIsSaved(true)
+    const existingData = localStorage.getItem('formData');
+    let parsedData;
+    if (existingData) {
+      parsedData = JSON.parse(existingData);
+    } else {
+      parsedData = {}; // Create an empty object if no existing data
+    }
+    const newData = {
+      isSaved: true,
+    };
+    
+    parsedData = { ...parsedData, ...newData };
+    const updatedDataString = JSON.stringify(parsedData);
+    localStorage.setItem('formData', updatedDataString);
+
+
   }
   console.log(user);
     return (
