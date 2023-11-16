@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaShoppingCart, FaUserCircle } from "react-icons/fa";
 import { AuthContext } from '../../context/AuthProvider';
 import { LuSearch } from "react-icons/lu";
-import Destination from '../../Comopnents/Destination';
+import Destination from '../../Components/Destination';
 
 
 const Navbar = () => {
@@ -47,11 +47,11 @@ const Navbar = () => {
          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
      <li><Link to='/' >Home</Link ></li>
       <li><Link to="/about">About</Link ></li>
-      <li><Link to="/about">Tour</Link ></li>
+      <li><Link to="/">Tour</Link ></li>
       <li><Link to="/about">Destination</Link ></li>
       <li><Link to="/about">Blog</Link ></li>
-      <li><Link to="/about">Pages</Link ></li>
-      <li><Link to="/about">Contact</Link ></li>
+      <li><Link to="/destination">Destination</Link ></li>
+      <li><Link to="/">Contact</Link ></li>
       </ul>
     </div>
     <Link  className=" text-xl font-bold">Advancer</Link >
@@ -60,11 +60,11 @@ const Navbar = () => {
     <ul className="menu menu-horizontal px-1 font-semibold">
       <li><Link to='/' >Home</Link ></li>
       <li><Link to="/about">About</Link ></li>
-      <li><Link to="/about">Tour</Link ></li>
-      <li><Link to="/about">Destination</Link ></li>
-      <li><Link to="/about">Blog</Link ></li>
-      <li><Link to="/about">Pages</Link ></li>
-      <li><Link to="/about">Contact</Link ></li>
+      <li><Link to="/">Tour</Link ></li>
+      <li><Link to="/destination">Destination</Link ></li>
+      <li><Link to="/">Blog</Link ></li>
+      <li><Link to="/">Pages</Link ></li>
+      <li><Link to="/">Contact</Link ></li>
     </ul>
                 </div>
               

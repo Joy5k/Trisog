@@ -54,8 +54,10 @@ const Booked = () => {
         <th>Name</th>
         <th>email</th>
         <th>Phone </th>
-                            <th>Date</th>
-                            <th>Destination</th>
+        <th>Date</th>
+       <th>Destination</th>
+                    <th>Guests</th>
+                   
       </tr>
     </thead>
     <tbody>
@@ -83,6 +85,9 @@ const Booked = () => {
         </th>
         <th>
           <td>{formData?.destination}</td>
+        </th>
+        <th>
+          <td>{formData?.guests}</td>
         </th>
         <th>
         <th>

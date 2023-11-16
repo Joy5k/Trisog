@@ -1,13 +1,13 @@
 import React from 'react';
-import Destination from '../../Comopnents/Destination';
+import Destination from '../../Components/Destination';
 import img1 from "../../assets/partners.png"
 import img2 from "../../assets/headerImg-2.avif"
-import Category from '../../Comopnents/Category';
-import TripPlan from '../../Comopnents/TripPlan';
-import OurDestinations from '../../Comopnents/OurDestinations';
-import FeaturedTour from '../../Comopnents/FeaturedTour';
-import OurFacilities from '../../Comopnents/OurFacilities';
-import Updates from '../../Comopnents/Updates';
+import Category from '../../Components/Category';
+import TripPlan from '../../Components/TripPlan';
+import OurDestinations from '../../Components/OurDestinations';
+import FeaturedTour from '../../Components/FeaturedTour';
+import OurFacilities from '../../Components/OurFacilities';
+import Updates from '../../Components/Updates';
 const Home = () => {
     return (
         <div>
