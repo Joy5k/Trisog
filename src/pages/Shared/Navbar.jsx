@@ -4,6 +4,7 @@ import { FaShoppingCart, FaUserCircle } from "react-icons/fa";
 import { AuthContext } from '../../context/AuthProvider';
 import { LuSearch } from "react-icons/lu";
 import Destination from '../../Components/Destination';
+import swal from 'sweetalert';
 
 
 const Navbar = () => {
@@ -21,9 +22,12 @@ const Navbar = () => {
     event.preventDefault();
     const searchText = event.target.search.value;
     setSearchText(searchText)
+
       if(searchText === "oman" || searchText === "australia" || searchText === "canada") {
         setMatchedDestination(true)
     }else {
+
+        swal("Didn't match ","you can try:-    oman , canada","error")
     setMatchedDestination(false)
       }
     

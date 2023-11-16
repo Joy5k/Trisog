@@ -47,8 +47,8 @@ const DestinationPage = () => {
              </div>
           </div>
           
-            <div className='-mt-36 mb-36'> <div className='w-9/12 mx-auto bg-white p-4 rounded-lg '>
-       
+         {formData.destination &&  <div className='-mt-36 mb-36'>
+            <div className='w-9/12 mx-auto bg-white p-4 rounded-lg '>
           <form className='ml-6 '  action="">
                 <div className='grid grid-cols-2 lg:grid-cols-5 gap-5'>
 
@@ -81,7 +81,8 @@ const DestinationPage = () => {
         </div>
                 </div>
             </form>
-        </div></div>
+            </div>
+          </div>}
             
         </div>
             <div className='lg:w-[1240px] mt-36'>

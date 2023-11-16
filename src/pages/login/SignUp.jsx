@@ -43,9 +43,38 @@ const SignUp = () => {
       navigate(from, { replace: true })
     } catch (error) {
       setError(error.message);
-      console.error('Error during sign up or update:', error);
+  let  errorCode = error.code;
+      switch (errorCode) {
+        case
+      
+      'auth/user-not-found':
+          setError('User not found.');
+          break;
+        case
+      
+      'auth/invalid-email':
+          setError('Invalid email address.');
+          break;
+        case
+      
+      'auth/wrong-password':
+          setError('Incorrect password.');
+          break;
+        case
+      
+      'auth/too-many-requests':
+          setError('Too many sign-in attempts. Please try again later.');
+          break;
+        case 'auth/invalid-api-key':
+          setError('Invalid API key.');
+          break;
+        default:
+          setError('An unexpected error occurred.');
+      }
     }
   };
+
+
     return (
         <div>
              <div className="hero min-h-screen bg-base-200">
@@ -57,7 +86,7 @@ const SignUp = () => {
  <form className="card-body"
            onSubmit={handleSignUp}                >
                 <h2 className='text-center text-4xl font-bold text-[#FF725E]'>SingUp</h2>
-                <p>{ error}</p>
+        
         <div className="form-control">
           <label className="label">
             <span className="label-text">First Name</span>
@@ -87,7 +116,8 @@ const SignUp = () => {
             <span className="label-text">Password</span>
           </label>
           <input onChange={handleFormChange} type="password" placeholder="password" name='password' className="input input-bordered" required />
-        </div>
+                </div>
+                <p className='text-red-500 font-semibold'>{error }</p>
         <div className="form-control mt-6">
           <button type='submit' className="btn  bg-[#FF725E]">Sign Up</button>
                             </div>
